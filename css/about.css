@@ -1,0 +1,49 @@
+/* =========================================
+   ABOUT — Bio, stats, avatar
+   ========================================= */
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.about__text p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: .97rem;
+}
+
+.about__text strong {
+  color: var(--text);
+}
+
+.about__stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat__number {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat__label {
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+.about__img-wrapper img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  display: block;
+}

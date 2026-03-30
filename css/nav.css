@@ -1,0 +1,67 @@
+/* =========================================
+   NAV — Header & navigation
+   ========================================= */
+
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: background var(--ease), border-color var(--ease), backdrop-filter var(--ease);
+}
+
+.header.scrolled {
+  background: rgba(8,13,26,.85);
+  border-color: var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.nav__logo {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-right: auto;
+  letter-spacing: -1px;
+  color: var(--accent);
+}
+
+.nav__links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav__links a {
+  font-size: .9rem;
+  color: var(--text-muted);
+  transition: color var(--ease);
+}
+.nav__links a:hover { color: var(--accent); }
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--ease);
+}

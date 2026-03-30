@@ -1,0 +1,52 @@
+/* =========================================
+   CONTACT — Contact cards & footer
+   ========================================= */
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-align: center;
+  transition: border-color var(--ease), transform var(--ease);
+}
+.contact-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.contact-card svg {
+  color: var(--accent);
+}
+
+.contact-card span {
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.contact-card small {
+  color: var(--text-muted);
+  font-size: .8rem;
+  word-break: break-all;
+}
+
+/* ---- Footer ---- */
+.footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+.footer strong { color: var(--text); }

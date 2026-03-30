@@ -1,0 +1,93 @@
+/* =========================================
+   BASE — Reset, variables, layout helpers
+   ========================================= */
+
+:root {
+  /* Colors */
+  --bg:         #080d1a;
+  --bg-alt:     #0d1424;
+  --bg-card:    #111c2e;
+  --border:     #1e2d45;
+  --accent:     #00c9a7;
+  --accent-dim: rgba(0,201,167,.12);
+  --gold:       #f5a623;
+  --text:       #e8edf5;
+  --text-muted: #6b7f9a;
+  --text-dim:   #3d5170;
+
+  /* Typography */
+  --font-body:  'Inter', -apple-system, sans-serif;
+  --font-head:  'Syne', sans-serif;
+
+  /* Spacing */
+  --section-gap: 7rem;
+  --container:   1100px;
+  --radius:      10px;
+
+  /* Transitions */
+  --ease: .25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+ul  { list-style: none; }
+a   { color: inherit; text-decoration: none; }
+
+/* ---- Container ---- */
+.container {
+  width: 90%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* ---- Section base ---- */
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section__title {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section__title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: .4rem;
+}
+
+.section__subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-size: .95rem;
+}

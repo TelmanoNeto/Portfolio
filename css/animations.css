@@ -1,0 +1,77 @@
+/* =========================================
+   ANIMATIONS — Fade-up & responsive rules
+   ========================================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+  .about__img-wrapper {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card--featured {
+    grid-column: span 1;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-gap: 4rem;
+  }
+
+  .nav__links,
+  .nav > .btn--outline {
+    display: none;
+  }
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: var(--bg);
+    padding: 2rem;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+    z-index: 99;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
