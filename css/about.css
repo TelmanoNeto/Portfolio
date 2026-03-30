@@ -6,8 +6,7 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 4rem;
-  align-items: center;
-  margin-top: 2.5rem;
+  align-items: start;
 }
 
 .about__text p {
