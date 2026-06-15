@@ -4,8 +4,8 @@
 
 .fade-up {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
 }
 
 .fade-up.visible {
@@ -17,12 +17,14 @@
    RESPONSIVE
    ========================================= */
 
+/* Tablet */
 @media (max-width: 900px) {
   .about__grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .about__img-wrapper {
-    max-width: 220px;
+    max-width: 200px;
     margin: 0 auto;
   }
 
@@ -31,10 +33,10 @@
   }
 
   .projects__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
-  .project-card--featured {
-    grid-column: span 1;
+  .projects__grid--featured {
+    grid-template-columns: 1fr;
   }
 
   .contact__grid {
@@ -42,36 +44,80 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 640px) {
   :root {
-    --section-gap: 4rem;
+    --section-gap: 4.5rem;
   }
 
-  .nav__links,
-  .nav > .btn--outline {
+  /* Nav: hide links, show hamburger */
+  .nav__links {
     display: none;
   }
   .nav__toggle {
     display: flex;
   }
 
+  /* Mobile menu dropdown */
   .nav__links.open {
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 64px 0 0 0;
-    background: var(--bg);
-    padding: 2rem;
-    gap: 1.5rem;
-    font-size: 1.2rem;
+    top: 68px;
+    left: 0; right: 0;
+    background: rgba(8 8 22 / .97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem;
+    gap: .2rem;
     z-index: 99;
   }
 
+  .nav__links.open li a {
+    display: block;
+    padding: .75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: .95rem;
+    color: var(--text-muted);
+  }
+  .nav__links.open li a:hover {
+    color: var(--text);
+    background: var(--bg-card-hover);
+  }
+
+  /* Hero */
+  .hero__name {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+  .hero__quote {
+    display: none;
+  }
+
+  /* Skills */
   .skills__grid {
     grid-template-columns: 1fr;
   }
 
+  /* Projects */
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact */
   .contact__grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
   }
 }
