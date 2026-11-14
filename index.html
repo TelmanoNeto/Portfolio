@@ -14,7 +14,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Petrona:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap">
+  <link rel="preload" as="image" href="/assets/corretor-mobile-long.jpg" fetchpriority="high">
   <link rel="stylesheet" href="/css/clientes.css">
+  <link rel="stylesheet" href="/css/cinema.css">
+  <script>document.documentElement.classList.add('cine');setTimeout(function(){if(!window.__cine)document.documentElement.classList.remove('cine')},3000)</script>
 </head>
 <body>
   <div class="pg">
@@ -45,7 +48,7 @@
             <span class="arc arc-line" aria-hidden="true"></span>
             <span class="arc arc-fill" aria-hidden="true"></span>
             <div class="hero-copy">
-              <h1>Sites e sistemas que trazem clientes e organizam <em>o seu negócio.</em></h1>
+              <h1 data-split>Sites e sistemas que trazem clientes e organizam <em>o seu negócio.</em></h1>
               <p class="hero-lead">Crio sites rápidos, bonitos no celular e feitos para levar o visitante direto para o seu WhatsApp.</p>
               <div class="ask">
                 <label for="site-hero">Qual é o site do seu negócio?</label>
@@ -67,10 +70,10 @@
       <section class="sec" aria-labelledby="t-probs">
         <div class="wrap">
           <div class="sec-head reveal">
-            <h2 id="t-probs">Reconhece algum destes problemas?</h2>
+            <h2 data-split id="t-probs">Reconhece algum destes problemas?</h2>
             <p>São os motivos mais comuns para um negócio perder clientes na internet sem perceber.</p>
           </div>
-          <ul class="probs reveal">
+          <ul class="probs" data-stagger>
             <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span>Seu site é antigo, lento ou quebra no celular</li>
             <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg></span>Você só tem Instagram e não aparece quando alguém busca no Google</li>
             <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"></path><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5"></path><path d="M12 16h.01"></path></svg></span>O visitante entra no site e não sabe como falar com você</li>
@@ -79,29 +82,29 @@
         </div>
       </section>
 
-      <section class="sec works-sec" id="trabalhos" aria-labelledby="t-works">
+      <section class="sec works-sec" id="trabalhos" data-scroll aria-labelledby="t-works">
         <div class="wrap">
           <div class="sec-head solo reveal">
-            <h2 id="t-works">Trabalhos</h2>
+            <h2 data-split id="t-works">Trabalhos</h2>
           </div>
           <div class="works">
 
-            <article class="case reveal">
+            <article class="case">
               <div>
-                <span class="case-kind">Site com sistema</span>
-                <h3>Corretor Prime JP</h3>
-                <p class="case-sum">Portal de imóveis para corretores parceiros em João Pessoa</p>
-                <div class="case-block">
+                <span class="case-kind reveal">Site com sistema</span>
+                <h3 data-split>Corretor Prime JP</h3>
+                <p class="case-sum reveal" style="--d:250ms">Portal de imóveis para corretores parceiros em João Pessoa</p>
+                <div class="case-block reveal">
                   <h4>O desafio</h4>
                   <p>Os corretores não tinham um lugar próprio para divulgar seus imóveis e eram pouco encontrados por quem pesquisava no Google.</p>
                 </div>
-                <div class="case-block">
+                <div class="case-block reveal">
                   <h4>O que foi feito</h4>
                   <ul class="case-list">
                     <li>Busca de imóveis por bairro, tipo e número de quartos</li><li>Uma página para cada corretor, com o registro no CRECI</li><li>Contato direto com o corretor de cada imóvel pelo WhatsApp</li><li>Um painel para os corretores cadastrarem e gerenciarem seus anúncios</li>
                   </ul>
                 </div>
-                <div class="case-block">
+                <div class="case-block reveal">
                   <h4>O resultado</h4>
                   <figure class="quote">
                     <blockquote>
@@ -113,9 +116,9 @@
                     </figcaption>
                   </figure>
                 </div>
-                <a class="case-link" href="https://corretorprimejp.com.br" target="_blank" rel="noopener">Ver o site no ar<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
+                <a class="case-link reveal" href="https://corretorprimejp.com.br" target="_blank" rel="noopener">Ver o site no ar<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
               </div>
-              <div class="case-stage">
+              <div class="case-stage" data-in>
                 <div class="phone"><div class="screen"><img src="/assets/corretor-mobile-long.jpg" alt="Corretor Prime JP rolando no celular"></div></div>
               </div>
             </article>
@@ -126,10 +129,10 @@
       <section class="sec" id="servicos" aria-labelledby="t-svc">
         <div class="wrap">
           <div class="sec-head reveal">
-            <h2 id="t-svc">Serviços</h2>
+            <h2 data-split id="t-svc">Serviços</h2>
             <p>O valor de cada projeto vem fechado na proposta, antes de começar.</p>
           </div>
-          <ul class="svc reveal">
+          <ul class="svc" data-stagger>
             <li><span class="svc-name">Landing page</span><span class="svc-desc">Uma página focada em transformar visitante em contato.</span><span class="svc-price"><small>a partir de</small><span class="big">R$499</span></span></li>
             <li><span class="svc-name">Site institucional</span><span class="svc-desc">Site completo com as páginas que o seu negócio precisa.</span><span class="svc-price"><small>a partir de</small><span class="big">R$999</span></span></li>
             <li><span class="svc-name">Site com sistema sob medida</span><span class="svc-desc">O seu site junto com um painel para gerenciar reservas, imóveis, clientes ou pedidos.</span><span class="svc-price"><small>a partir de</small><span class="big">R$1.499</span></span></li>
@@ -146,9 +149,9 @@
       <section class="sec sec-sem-topo" id="como-funciona" aria-labelledby="t-steps">
         <div class="wrap">
           <div class="sec-head solo reveal">
-            <h2 id="t-steps">Como funciona</h2>
+            <h2 data-split id="t-steps">Como funciona</h2>
           </div>
-          <ol class="steps reveal">
+          <ol class="steps" data-stagger>
             <li><h3>Conversa</h3><p>Você me conta sobre o seu negócio pelo WhatsApp.</p></li>
             <li><h3>Proposta</h3><p>Envio o escopo, o prazo e o valor fechado.</p></li>
             <li><h3>Criação</h3><p>Você acompanha cada etapa e pede ajustes até ficar do seu jeito.</p></li>
@@ -158,10 +161,10 @@
       </section>
 
       <section class="sec sec-sem-topo" aria-labelledby="t-about">
-        <div class="wrap about reveal">
+        <div class="wrap about reveal" data-scroll>
           <div class="arch"><img src="/assets/telmano.jpg" alt="Telmano Neto sorrindo, de moletom branco"></div>
-          <div class="about-text">
-            <h2 id="t-about">Quem vai fazer o seu site</h2>
+          <div class="about-text" data-stagger>
+            <h2 data-split id="t-about">Quem vai fazer o seu site</h2>
             <p class="lead-serif">Quem fala com você no WhatsApp é quem constrói o seu site.</p>
             <p>Sou Telmano, desenvolvedor e estudante de Ciência da Computação na UFCG, com experiência em pesquisa e desenvolvimento de software. Atendo cada cliente pessoalmente, do primeiro contato até o site no ar.</p>
           </div>
@@ -171,9 +174,9 @@
       <section class="sec sec-sem-topo" id="duvidas" aria-labelledby="t-faq">
         <div class="wrap">
           <div class="sec-head solo reveal">
-            <h2 id="t-faq">Dúvidas comuns</h2>
+            <h2 data-split id="t-faq">Dúvidas comuns</h2>
           </div>
-          <div class="faq reveal">
+          <div class="faq" data-stagger>
             <details><summary>Quanto tempo leva?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></summary><p>Depende do tamanho do projeto. O prazo fica definido na proposta, antes de começar.</p></details>
             <details><summary>Preciso ter domínio e hospedagem?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></summary><p>Não. Eu cuido disso para você.</p></details>
             <details><summary>Posso pedir alterações?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></summary><p>Sim. Durante a criação você acompanha cada etapa e pede ajustes até o site ficar do jeito que você gosta.</p></details>
@@ -182,14 +185,14 @@
         </div>
       </section>
 
-      <section class="end" aria-labelledby="t-end">
+      <section class="end" data-scroll aria-labelledby="t-end">
         <div class="wrap">
-          <div class="panel reveal">
+          <div class="panel">
             <span class="arc arc-line" aria-hidden="true"></span>
             <span class="arc arc-fill" aria-hidden="true"></span>
-            <h2 id="t-end">Vamos ver o que dá para melhorar <em>no seu site?</em></h2>
-            <p class="end-lead">Me manda o endereço e eu faço uma análise gratuita.</p>
-            <div class="ask">
+            <h2 data-split id="t-end">Vamos ver o que dá para melhorar <em>no seu site?</em></h2>
+            <p class="end-lead reveal" style="--d:200ms">Me manda o endereço e eu faço uma análise gratuita.</p>
+            <div class="ask reveal" style="--d:350ms">
               <label for="site-end">Qual é o site do seu negócio?</label>
               <div class="ask-row">
                 <input id="site-end" type="text" inputmode="url" autocomplete="url" placeholder="www.seunegocio.com.br" data-site>
@@ -212,5 +215,6 @@
 
   </div>
   <script src="/js/clientes.js"></script>
+  <script src="/js/cinema.js"></script>
 </body>
 </html>

@@ -1,0 +1,435 @@
+/* Camada cinematográfica =========================================
+   Movimento por cima da identidade de clientes.css: mesmas cores,
+   mesmas fontes, mesmo layout. O motivo é o arco (da foto e dos
+   painéis) e as linhas finas que se desenham com a rolagem.
+   Sem JavaScript o site aparece inteiro e parado; com
+   prefers-reduced-motion nada se move. */
+
+
+/* Microinterações (só transições de hover, valem sempre) ========= */
+
+.pg .btn-line {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color .35s ease, translate .45s cubic-bezier(.16,1,.3,1);
+}
+
+.pg .btn-line::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+
+.pg .btn-line:hover {
+  background: transparent;
+}
+
+.pg .btn-line:hover::before {
+  transform: scaleY(1);
+}
+
+.pg .btn-solid {
+  transition: transform .25s ease, background .25s ease, box-shadow .35s ease, translate .45s cubic-bezier(.16,1,.3,1);
+}
+
+.pg .btn-solid:hover {
+  box-shadow: 0 18px 34px -20px rgba(10,16,28,.6);
+}
+
+.case-link svg {
+  transition: translate .35s cubic-bezier(.16,1,.3,1);
+}
+
+.pg .case-link:hover svg {
+  translate: 3px -3px;
+}
+
+.svc li {
+  position: relative;
+}
+
+.svc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1.5px;
+  background: var(--marinho);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+  z-index: 1;
+}
+
+.svc li:hover::before {
+  transform: scaleX(1);
+}
+
+.faq details.closing summary svg {
+  transform: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* Cabeçalho: linha de progresso na cor do ponto da marca ========= */
+
+.top {
+  transition: box-shadow .3s ease;
+}
+
+.top.is-scrolled {
+  box-shadow: 0 1px 0 var(--line);
+}
+
+.top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--dot);
+  transform: scaleX(var(--sp, 0));
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+
+/* Movimento ====================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* O celular do hero rola sozinho (como antes); o do caso rola com a página */
+  .screen img {
+    animation: scroll 16s cubic-bezier(.65,0,.35,1) 1.4s infinite alternate;
+  }
+
+  .cine .hero .screen img {
+    animation-delay: 2.8s;
+  }
+
+  .cine .case-stage .screen img {
+    animation: none;
+    translate: 0 calc(var(--shot, 0) * -47%);
+    will-change: translate;
+  }
+
+
+  /* Abertura: o painel se abre em arco, os arcos entram, o título sobe palavra por palavra */
+  .cine .top {
+    animation: cine-drop .9s cubic-bezier(.16,1,.3,1) .2s backwards;
+  }
+
+  .cine .hero .panel {
+    animation: cine-aperture 1.5s cubic-bezier(.77,0,.18,1) backwards;
+    transform-origin: 50% 0;
+    scale: calc(1 - var(--out, 0) * .06);
+    translate: 0 calc(var(--out, 0) * 48px);
+  }
+
+  .cine .hero .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(560px circle at calc((var(--mx, .35) + 1) * 50%) calc((var(--my, -.3) + 1) * 50%), rgba(239,201,138,.11), transparent 70%);
+  }
+
+  .cine .hero .arc-line {
+    animation: cine-arc 2s cubic-bezier(.16,1,.3,1) .55s backwards;
+    translate: calc(var(--mx, 0) * 18px) calc(var(--my, 0) * 14px + var(--out, 0) * 140px);
+    rotate: calc(var(--out, 0) * 24deg);
+  }
+
+  .cine .hero .arc-fill {
+    animation: cine-arc 2s cubic-bezier(.16,1,.3,1) .4s backwards;
+    translate: calc(var(--mx, 0) * -28px) calc(var(--my, 0) * -20px + var(--out, 0) * 70px);
+  }
+
+  .cine .hero h1 {
+    --d: 700ms;
+  }
+
+  .cine .hero-copy {
+    translate: 0 calc(var(--out, 0) * -70px);
+    opacity: calc(1 - var(--out, 0) * 1.15);
+  }
+
+  .cine .hero-lead {
+    animation: cine-rise 1s cubic-bezier(.16,1,.3,1) 1.2s backwards;
+  }
+
+  .cine .hero .ask {
+    animation: cine-rise 1s cubic-bezier(.16,1,.3,1) 1.35s backwards;
+  }
+
+  .cine .hero .device {
+    animation: cine-rise-far 1.5s cubic-bezier(.16,1,.3,1) .8s backwards;
+    translate: calc(var(--mx, 0) * -12px) calc(var(--my, 0) * -8px + var(--out, 0) * 90px);
+  }
+
+  .cine .hero .tag {
+    animation: cine-tag 1s cubic-bezier(.16,1,.3,1) 1.75s backwards;
+    translate: calc(var(--mx, 0) * -18px) calc(var(--my, 0) * -12px);
+  }
+
+
+  /* Títulos: cada palavra sobe de trás de uma máscara */
+  .cine [data-split] .w {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0 .08em .16em;
+    margin: 0 -.08em -.16em;
+  }
+
+  .cine [data-split] .w > span {
+    display: inline-block;
+    transform: translateY(115%) rotate(5deg);
+    transform-origin: 0 100%;
+    transition: transform 1.15s cubic-bezier(.16,1,.3,1);
+    transition-delay: calc(var(--d, 0ms) + var(--i, 0) * 45ms);
+  }
+
+  .cine [data-split].is-in .w > span {
+    transform: none;
+  }
+
+
+  /* Revelações ao rolar */
+  .cine .reveal {
+    opacity: 0;
+    translate: 0 34px;
+    transition: opacity .9s ease, translate 1.15s cubic-bezier(.16,1,.3,1);
+    transition-delay: var(--d, 0ms);
+  }
+
+  .cine .reveal.is-in {
+    opacity: 1;
+    translate: none;
+  }
+
+  .cine .sec-head.reveal,
+  .cine .about.reveal {
+    opacity: 1;
+    translate: none;
+  }
+
+  .cine .sec-head p {
+    opacity: 0;
+    translate: 0 18px;
+    transition: opacity .9s ease .4s, translate 1.15s cubic-bezier(.16,1,.3,1) .4s;
+  }
+
+  .cine .sec-head.is-in p {
+    opacity: 1;
+    translate: none;
+  }
+
+  .cine [data-stagger] > * {
+    opacity: 0;
+    translate: 0 26px;
+    transition: opacity .8s ease, translate 1.05s cubic-bezier(.16,1,.3,1);
+    transition-delay: calc(140ms + var(--i, 0) * 95ms);
+  }
+
+  .cine [data-stagger].is-in > * {
+    opacity: 1;
+    translate: none;
+  }
+
+  .cine [data-stagger] > [data-split] {
+    opacity: 1;
+    translate: none;
+  }
+
+
+  /* As linhas finas da página se desenham da esquerda para a direita */
+  .cine .probs li,
+  .cine .svc li,
+  .cine .steps li,
+  .cine .case-block {
+    border-top-color: transparent;
+    position: relative;
+  }
+
+  .cine .probs li::after,
+  .cine .svc li::after,
+  .cine .steps li::after,
+  .cine .case-block::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--lw, 1px) * -1);
+    height: var(--lw, 1px);
+    background: var(--lc, var(--line));
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 1.3s cubic-bezier(.65,0,.35,1);
+    transition-delay: calc(var(--i, 0) * 120ms);
+  }
+
+  .cine .steps li {
+    --lw: 2px;
+    --lc: var(--ink);
+  }
+
+  .cine .probs.is-in li::after,
+  .cine .svc.is-in li::after,
+  .cine .steps.is-in li::after,
+  .cine .case-block.is-in::after {
+    transform: scaleX(1);
+  }
+
+  .cine .probs .ico {
+    scale: .4;
+    transition: scale .9s cubic-bezier(.34,1.56,.64,1);
+    transition-delay: calc(260ms + var(--i, 0) * 95ms);
+  }
+
+  .cine .probs.is-in .ico {
+    scale: 1;
+  }
+
+
+  /* Trabalhos: o celular entra, inclina com o cursor e rola junto com a leitura */
+  .cine .case-stage .phone {
+    opacity: 0;
+    translate: 0 90px;
+    transform: perspective(1400px) rotateX(calc(var(--ty, 0) * -5deg)) rotateY(calc(var(--tx, 0) * 7deg));
+    transition: opacity 1s ease .15s, translate 1.4s cubic-bezier(.16,1,.3,1) .15s;
+  }
+
+  .cine .case-stage.is-in .phone {
+    opacity: 1;
+    translate: none;
+  }
+
+  .cine .case-stage::before {
+    scale: calc(.84 + var(--shot, 0) * .2);
+  }
+
+
+  /* Sobre: a foto nasce de baixo para cima dentro do arco */
+  .cine .about .arch {
+    clip-path: inset(100% 0 0 0 round 180px 180px 24px 24px);
+    transition: clip-path 1.6s cubic-bezier(.77,0,.18,1);
+  }
+
+  .cine .about.is-in .arch {
+    clip-path: inset(0 0 0 0 round 180px 180px 24px 24px);
+  }
+
+  .cine .about .arch img {
+    translate: 0 calc(var(--v, 0) * -28px);
+  }
+
+
+  /* Chamada final: arcos em camadas que se movem em sentidos opostos */
+  .cine .end .arc-line {
+    translate: 0 calc(var(--v, 0) * -36px);
+    rotate: calc(var(--v, 0) * -10deg);
+  }
+
+  .cine .end .arc-fill {
+    translate: 0 calc(var(--v, 0) * 50px);
+  }
+
+
+  /* No desktop, as cenas grandes se abrem como uma cortina ao entrar */
+  @media (min-width: 981px) {
+    .cine .works-sec {
+      clip-path: inset(calc((1 - var(--c, 1)) * 56px) calc((1 - var(--c, 1)) * 4.5%) 0 round 36px);
+    }
+
+    .cine .end .panel {
+      clip-path: inset(calc((1 - var(--c, 1)) * 40px) calc((1 - var(--c, 1)) * 6%) round 36px);
+    }
+  }
+}
+
+
+/* Trabalhos no desktop: o celular fica parado enquanto o texto passa */
+@media (min-width: 981px) {
+  .case {
+    align-items: start;
+  }
+
+  .case-stage {
+    position: sticky;
+    top: 96px;
+    height: min(720px, calc(100svh - 120px));
+    padding: 0;
+  }
+
+  .case-stage .phone {
+    height: min(572px, calc(100svh - 170px));
+    width: auto;
+    aspect-ratio: 280 / 572;
+  }
+}
+
+
+/* Quadros-chave ================================================== */
+
+@keyframes cine-aperture {
+  from {
+    clip-path: inset(16% 30% 0 30% round 999px 999px 36px 36px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 36px);
+  }
+}
+
+@keyframes cine-arc {
+  from {
+    opacity: 0;
+    transform: scale(.6) rotate(-25deg);
+  }
+}
+
+@keyframes cine-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+@keyframes cine-rise-far {
+  from {
+    opacity: 0;
+    transform: translateY(140px);
+  }
+}
+
+@keyframes cine-tag {
+  from {
+    opacity: 0;
+    transform: translateX(-24px) scale(.96);
+  }
+}
+
+@keyframes cine-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}

@@ -932,33 +932,7 @@ body {
 }
 
 
-/* Animações =================================================== */
-
-@media (prefers-reduced-motion:no-preference) {
-  .hero-copy {
-    animation: rise .9s cubic-bezier(.16,1,.3,1) both;
-  }
-  .hero .device {
-    animation: rise 1.1s cubic-bezier(.16,1,.3,1) .2s both;
-  }
-  .hero .tag {
-    animation: rise .8s cubic-bezier(.16,1,.3,1) .7s both;
-  }
-  .screen img {
-    animation: scroll 16s cubic-bezier(.65,0,.35,1) 1.4s infinite alternate;
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+/* Animações: a coreografia fica em css/cinema.css ============== */
 
 @keyframes scroll {
   0%, 8% {
