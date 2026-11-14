@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -s \"https://www.rhuanbello.com/assets/data.json\")"
+      "Bash(curl -s \"https://www.rhuanbello.com/assets/data.json\")",
+      "Bash(git checkout *)",
+      "Bash(git merge *)",
+      "Bash(git restore *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

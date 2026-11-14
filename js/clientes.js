@@ -1,5 +1,5 @@
 // Número do WhatsApp com DDI e DDD, só dígitos.
-const WHATSAPP = '5583987558612';
+const WHATSAPP = '5583993850791';
 const msgDireto = 'Olá, Telmano! Vim pelo seu site e quero conversar sobre um site para o meu negócio.';
 const inputs = document.querySelectorAll('[data-site]');
 function msgAnalise(site) {
