@@ -636,6 +636,51 @@ body {
   border-radius: 34px;
 }
 
+/* Notebook: para sites que brilham mais na tela grande */
+.laptop {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 600px;
+}
+
+.laptop-lid {
+  padding: 12px 12px 14px;
+  border-radius: 18px 18px 6px 6px;
+  background: #0B0D0B;
+  box-shadow: 0 50px 90px -40px rgba(0,0,0,.7);
+}
+
+.case-stage .laptop .screen {
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  background: #0E0E0E;
+  --travel: -74.2%;
+}
+
+.laptop-base {
+  position: relative;
+  width: 114%;
+  height: 16px;
+  margin-left: -7%;
+  border-radius: 2px 2px 14px 14px;
+  background: linear-gradient(#3A3D3A, #161816 70%);
+  box-shadow: 0 30px 40px -24px rgba(0,0,0,.6);
+}
+
+.laptop-base::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16%;
+  height: 6px;
+  translate: -50% 0;
+  border-radius: 0 0 8px 8px;
+  background: #0B0D0B;
+}
+
 
 /* Serviços e preços =========================================== */
 
@@ -939,7 +984,7 @@ body {
     transform: translateY(0);
   }
   92%, 100% {
-    transform: translateY(-47%);
+    transform: translateY(var(--travel, -47%));
   }
 }
 
@@ -1056,6 +1101,16 @@ body {
   .case-stage .phone {
     width: 240px;
     height: 490px;
+  }
+  .laptop {
+    width: 92%;
+  }
+  .laptop-lid {
+    padding: 8px 8px 10px;
+    border-radius: 12px 12px 4px 4px;
+  }
+  .laptop-base {
+    height: 11px;
   }
   .faq summary {
     font-size: 21px;

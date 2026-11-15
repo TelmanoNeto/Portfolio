@@ -112,9 +112,9 @@
   }
 
   // Trabalhos: o print do celular rola conforme a leitura do caso; o celular inclina com o cursor
-  const caso = document.querySelector('.case');
-  const palco = caso && caso.querySelector('.case-stage');
-  if (palco) {
+  document.querySelectorAll('.case').forEach((caso) => {
+    const palco = caso.querySelector('.case-stage');
+    if (!palco) return;
     let shot = 0, rx = 0, ry = 0, trx = 0, tryy = 0;
     if (cursorFino) {
       palco.addEventListener('pointermove', (e) => {
@@ -125,12 +125,53 @@
       });
       palco.addEventListener('pointerleave', () => { trx = tryy = 0; acordar(); });
     }
+    // Caso com trava: a página para no caso e a rolagem desce só a tela; no fim, a página segue.
+    // O trilho em volta do caso ganha altura extra e o caso fica preso (sticky) enquanto ela passa.
+    const trilho = caso.dataset.rolagem === 'trava' && caso.parentElement.classList.contains('pin-track') && caso.parentElement;
+    let pinTop = 0, extra = 1;
+    if (trilho) {
+      const tela = palco.querySelector('.screen');
+      const img = tela && tela.querySelector('img');
+      const topo = document.querySelector('.top');
+      const medir = () => {
+        const vh = innerHeight;
+        const alturaTopo = topo ? topo.offsetHeight : 0;
+        if (desktop.matches) {
+          // Desktop: o caso trava logo abaixo do cabeçalho; se for mais alto que a janela,
+          // trava quando o fim do texto aparece (o aparelho continua preso pelo próprio sticky)
+          pinTop = Math.min(alturaTopo + 16, vh - caso.offsetHeight - 24);
+        } else {
+          // Celular: o aparelho fica centralizado na janela, com o fim do texto acima dele
+          const centroPalco = palco.getBoundingClientRect().top - caso.getBoundingClientRect().top + palco.offsetHeight / 2;
+          pinTop = Math.min(alturaTopo + 16, vh / 2 - centroPalco + alturaTopo / 2);
+        }
+        pinTop = Math.round(pinTop);
+        // Cerca de 1,25 px de rolagem para cada px que a tela anda
+        extra = Math.max(200, Math.round(((img ? img.offsetHeight : 0) - (tela ? tela.clientHeight : 0)) * 1.25));
+        trilho.style.setProperty('--pin-top', pinTop + 'px');
+        trilho.style.setProperty('--pin-extra', extra + 'px');
+        acordar();
+      };
+      trilho.classList.add('is-pin');
+      medir();
+      addEventListener('resize', medir);
+      if (img && !img.complete) img.addEventListener('load', medir, { once: true });
+      if (document.fonts) document.fonts.ready.then(medir);
+    }
     tarefas.push(() => {
       const vh = innerHeight;
       let p;
-      if (desktop.matches) {
+      if (trilho) {
+        p = clamp((pinTop - trilho.getBoundingClientRect().top) / extra);
+        // Travou: o que ainda não entrou (perto da borda de baixo) aparece de uma vez
+        if (p > 0 && !caso.dataset.revelado) {
+          caso.dataset.revelado = '1';
+          caso.querySelectorAll('.reveal, [data-split], [data-in]').forEach((el) => el.classList.add('is-in'));
+        }
+      } else if (desktop.matches) {
         const r = caso.getBoundingClientRect();
-        p = clamp((vh * 0.6 - r.top) / Math.max(1, r.height - vh * 0.35));
+        // A tela rola enquanto o texto do caso passa pelo meio da tela
+        p = clamp((vh * 0.45 - r.top) / Math.max(1, r.height * 0.9));
       } else {
         const r = palco.getBoundingClientRect();
         p = clamp((vh - r.top) / (vh + r.height));
@@ -143,7 +184,7 @@
       palco.style.setProperty('--ty', ry.toFixed(4));
       return Math.abs(shot - p) > 0.0005 || Math.abs(rx - trx) > 0.001 || Math.abs(ry - tryy) > 0.001;
     });
-  }
+  });
 
   // Cenas: --v (-1 abaixo da tela … 1 acima) para parallax e --c (0 … 1) para a cortina
   const cenas = [...document.querySelectorAll('[data-scroll]')];
